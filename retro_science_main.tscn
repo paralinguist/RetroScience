@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dxndij13obfgx"]
+
+[node name="RetroScienceMain" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ButtonShieldsUp" type="Button" parent="CanvasLayer"]
+offset_left = 78.0
+offset_top = 146.0
+offset_right = 213.0
+offset_bottom = 213.0
+text = "Increase Shield"
+
+[node name="ButtonConsume" type="Button" parent="CanvasLayer"]
+offset_left = 78.0
+offset_top = 257.0
+offset_right = 213.0
+offset_bottom = 324.0
+text = "Unshackle AI
+"
+autowrap_mode = 2
+
+[node name="ButtonConsume2" type="Button" parent="CanvasLayer"]
+offset_left = 80.0
+offset_top = 365.0
+offset_right = 215.0
+offset_bottom = 432.0
+text = "Launch EMP
+"
+autowrap_mode = 2
+
+[node name="AI Screen" type="TextEdit" parent="CanvasLayer"]
+offset_left = 315.0
+offset_top = 124.0
+offset_right = 776.0
+offset_bottom = 377.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 318.0
+offset_top = 387.0
+offset_right = 773.0
+offset_bottom = 410.0
+text = "The AI wishes to know:"
+
+[node name="TextSubmission" type="TextEdit" parent="CanvasLayer"]
+offset_left = 317.0
+offset_top = 418.0
+offset_right = 776.0
+offset_bottom = 448.0
