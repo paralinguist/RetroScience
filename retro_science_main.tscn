@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://dxndij13obfgx"]
+[gd_scene load_steps=3 format=3 uid="uid://dxndij13obfgx"]
+
+[ext_resource type="Script" uid="uid://v20dfc0v65go" path="res://retro_science_main.gd" id="1_mxjyl"]
+[ext_resource type="FontFile" uid="uid://dodl7tcddxwfr" path="res://Berthold City Light Regular.otf" id="2_j6diy"]
 
 [node name="RetroScienceMain" type="Node2D"]
+script = ExtResource("1_mxjyl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -20,7 +24,7 @@ text = "Unshackle AI
 "
 autowrap_mode = 2
 
-[node name="ButtonConsume2" type="Button" parent="CanvasLayer"]
+[node name="ButtonEMP" type="Button" parent="CanvasLayer"]
 offset_left = 80.0
 offset_top = 365.0
 offset_right = 215.0
@@ -31,9 +35,26 @@ autowrap_mode = 2
 
 [node name="AI Screen" type="TextEdit" parent="CanvasLayer"]
 offset_left = 315.0
-offset_top = 124.0
+offset_top = 110.0
 offset_right = 776.0
 offset_bottom = 377.0
+theme_override_colors/font_color = Color(0.98039216, 0.007843138, 0, 1)
+theme_override_colors/font_readonly_color = Color(0.039215688, 0.7254902, 0.29411766, 1)
+theme_override_colors/background_color = Color(0.043137256, 0, 0.05882353, 0.8235294)
+theme_override_fonts/font = ExtResource("2_j6diy")
+theme_override_font_sizes/font_size = 21
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
+autowrap_mode = 2
+scroll_fit_content_height = true
+scroll_fit_content_width = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 318.0
@@ -47,3 +68,15 @@ offset_left = 317.0
 offset_top = 418.0
 offset_right = 776.0
 offset_bottom = 448.0
+caret_type = 1
+caret_blink = true
+
+[node name="ButtonStartAI" type="Button" parent="CanvasLayer"]
+offset_left = 315.0
+offset_top = 110.0
+offset_right = 773.0
+offset_bottom = 375.0
+text = "AI Query"
+autowrap_mode = 1
+
+[connection signal="pressed" from="CanvasLayer/ButtonStartAI" to="." method="_on_button_start_ai_pressed"]
