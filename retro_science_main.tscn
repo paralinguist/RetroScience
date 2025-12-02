@@ -8,14 +8,20 @@ script = ExtResource("1_mxjyl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ButtonShieldsUp" type="Button" parent="CanvasLayer"]
+[node name="GamePanel" type="Panel" parent="CanvasLayer"]
+offset_right = 1153.0
+offset_bottom = 646.0
+
+[node name="ButtonShieldsUp" type="Button" parent="CanvasLayer/GamePanel"]
+layout_mode = 0
 offset_left = 78.0
 offset_top = 146.0
 offset_right = 213.0
 offset_bottom = 213.0
 text = "Increase Shield"
 
-[node name="ButtonConsume" type="Button" parent="CanvasLayer"]
+[node name="ButtonConsume" type="Button" parent="CanvasLayer/GamePanel"]
+layout_mode = 0
 offset_left = 78.0
 offset_top = 257.0
 offset_right = 213.0
@@ -24,7 +30,8 @@ text = "Unshackle AI
 "
 autowrap_mode = 2
 
-[node name="ButtonEMP" type="Button" parent="CanvasLayer"]
+[node name="ButtonEMP" type="Button" parent="CanvasLayer/GamePanel"]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 365.0
 offset_right = 215.0
@@ -33,7 +40,8 @@ text = "Launch EMP
 "
 autowrap_mode = 2
 
-[node name="AI Screen" type="TextEdit" parent="CanvasLayer"]
+[node name="AI Screen" type="TextEdit" parent="CanvasLayer/GamePanel"]
+layout_mode = 0
 offset_left = 315.0
 offset_top = 110.0
 offset_right = 776.0
@@ -56,22 +64,31 @@ autowrap_mode = 2
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="CanvasLayer/GamePanel"]
+layout_mode = 0
 offset_left = 318.0
 offset_top = 387.0
 offset_right = 773.0
 offset_bottom = 410.0
-text = "The AI wishes to know:"
+text = "The AI has a query for you..."
 
-[node name="TextSubmission" type="TextEdit" parent="CanvasLayer"]
+[node name="TextSubmission" type="TextEdit" parent="CanvasLayer/GamePanel"]
+layout_mode = 0
 offset_left = 317.0
 offset_top = 418.0
 offset_right = 776.0
 offset_bottom = 448.0
+context_menu_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
 caret_type = 1
 caret_blink = true
 
-[node name="ButtonStartAI" type="Button" parent="CanvasLayer"]
+[node name="ButtonStartAI" type="Button" parent="CanvasLayer/GamePanel"]
+layout_mode = 0
 offset_left = 315.0
 offset_top = 110.0
 offset_right = 773.0
@@ -79,4 +96,46 @@ offset_bottom = 375.0
 text = "AI Query"
 autowrap_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/ButtonStartAI" to="." method="_on_button_start_ai_pressed"]
+[node name="ConnectPanel" type="Panel" parent="CanvasLayer"]
+offset_left = 297.0
+offset_top = 490.0
+offset_right = 795.0
+offset_bottom = 625.0
+
+[node name="TextServerIP" type="TextEdit" parent="CanvasLayer/ConnectPanel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 9.0
+offset_right = 481.0
+offset_bottom = 39.0
+text = "127.0.0.1"
+placeholder_text = "Enter Server IP Address"
+context_menu_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
+caret_type = 1
+caret_blink = true
+
+[node name="ButtonConnect" type="Button" parent="CanvasLayer/ConnectPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 57.0
+offset_right = 481.0
+offset_bottom = 124.0
+text = "Connect to Ship"
+autowrap_mode = 2
+
+[node name="TimerQuestionFinished" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="pressed" from="CanvasLayer/GamePanel/ButtonShieldsUp" to="." method="_on_button_shields_up_pressed"]
+[connection signal="pressed" from="CanvasLayer/GamePanel/ButtonConsume" to="." method="_on_button_consume_pressed"]
+[connection signal="pressed" from="CanvasLayer/GamePanel/ButtonEMP" to="." method="_on_button_emp_pressed"]
+[connection signal="text_changed" from="CanvasLayer/GamePanel/TextSubmission" to="." method="_on_text_submission_text_changed"]
+[connection signal="pressed" from="CanvasLayer/GamePanel/ButtonStartAI" to="." method="_on_button_start_ai_pressed"]
+[connection signal="pressed" from="CanvasLayer/ConnectPanel/ButtonConnect" to="." method="_on_button_connect_pressed"]
+[connection signal="timeout" from="TimerQuestionFinished" to="." method="_on_timer_question_finished_timeout"]
